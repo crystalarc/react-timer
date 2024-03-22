@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
-import './App.css';
-import { Timer } from './app/timer/Timer';
+import { Timer } from './timer/Timer';
 
 function App() {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
