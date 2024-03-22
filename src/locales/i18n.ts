@@ -25,4 +25,4 @@ i18n
     },
   });
 
-i18n.changeLanguage('cs');
+i18n.changeLanguage('en');
