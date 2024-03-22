@@ -2,12 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useDebounce } from '../utils/useDebounce';
-import { clockModelToSeconds, secondsToClockModel } from '../utils/time';
+import { secondsToClockModel } from '../utils/time';
+import { getTime } from './getTime';
 
 const DEBOUNCE = 140;
-
-const getTime = (hours: string, minutes: string, seconds: string): number =>
-  (parseInt(hours) || 0) * 3600 + (parseInt(minutes) || 0) * 60 + (parseInt(seconds) || 0);
 
 export function TimerInputs({
   disabled = false,
@@ -39,11 +37,8 @@ export function TimerInputs({
   }, [debouncedHours, debouncedMinutes, debouncedSeconds, onTimeChange]);
 
   useEffect(() => {
-    const lastTime = clockModelToSeconds({
-      hours: parseInt(hours),
-      minutes: parseInt(minutes),
-      seconds: parseInt(seconds),
-    });
+    const lastTime = getTime(hours, minutes, seconds);
+
     if (totalTime !== lastTime) {
       const { hours, minutes, seconds } = secondsToClockModel(totalTime);
       setHours(hours.toString());
