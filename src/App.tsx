@@ -8,8 +8,6 @@ function App() {
   const [totalTime, setTotalTime] = useState(5 * 60 * 60);
   const [timeSpent, setTimeSpent] = useState(0);
 
-  console.log(isTimerRunning, timeSpent);
-
   const handleTimerEnd = () => {
     setIsTimerRunning(false);
     setTimeSpent(0);
