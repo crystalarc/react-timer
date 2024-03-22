@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import './App.css';
-import { Timer } from './timer/Timer';
+import { Timer } from './app/timer/Timer';
 
 function App() {
   const [isTimerRunning, setIsTimerRunning] = useState(false);
-  const [totalTime, setTotalTime] = useState(5 * 60 * 60);
+  const [totalTime, setTotalTime] = useState(5);
   const [timeSpent, setTimeSpent] = useState(0);
 
   const handleTimerEnd = () => {

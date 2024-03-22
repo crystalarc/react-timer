@@ -39,7 +39,7 @@ export function Timer({
   const remainingTime = totalTime - time;
 
   useEffect(() => {
-    let interval: NodeJS.Timer;
+    let interval: NodeJS.Timeout;
 
     if (isRunning) {
       interval = setInterval(() => {
@@ -52,7 +52,7 @@ export function Timer({
   }, [isRunning, onTick]);
 
   useEffect(() => {
-    if (hasFinished) {
+    if (hasFinished && totalTime > 0) {
       if (beep) {
         makeBeep();
       }
@@ -82,11 +82,7 @@ export function Timer({
         >
           {t('global.pause')}
         </Button>
-        <Button
-          variant="secondary"
-          onClick={() => onEnd(time)}
-          disabled={time === 0}
-        >
+        <Button variant="secondary" onClick={() => onEnd(time)} disabled={time === 0}>
           {t('global.end')}
         </Button>
       </div>
