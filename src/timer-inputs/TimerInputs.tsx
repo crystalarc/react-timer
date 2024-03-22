@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useDebounce } from '../utils/useDebounce';
@@ -7,9 +7,7 @@ import { clockModelToSeconds, secondsToClockModel } from '../utils/time';
 const DEBOUNCE = 140;
 
 const getTime = (hours: string, minutes: string, seconds: string): number =>
-  (parseInt(hours) || 0) * 3600 +
-  (parseInt(minutes) || 0) * 60 +
-  (parseInt(seconds) || 0);
+  (parseInt(hours) || 0) * 3600 + (parseInt(minutes) || 0) * 60 + (parseInt(seconds) || 0);
 
 export function TimerInputs({
   disabled = false,
@@ -32,11 +30,7 @@ export function TimerInputs({
   const lastDebouncedTime = useRef(0);
 
   useEffect(() => {
-    const debouncedTime = getTime(
-      debouncedHours,
-      debouncedMinutes,
-      debouncedSeconds
-    );
+    const debouncedTime = getTime(debouncedHours, debouncedMinutes, debouncedSeconds);
 
     if (debouncedTime !== null && lastDebouncedTime.current !== debouncedTime) {
       lastDebouncedTime.current = debouncedTime;
